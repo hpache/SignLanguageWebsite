@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 function record_button(){
 
@@ -59,10 +59,19 @@ function submit_button(){
     if (incomplete_item != null){
 
         incomplete_item.className = "stepper-item completed";
+
+        if ($(".stepper-item.active > .step-counter")[0]){
+            let fileName = "ASL_";
+            fileName += $(".stepper-item.active > .step-counter")[0].innerHTML + "\.mp4";
+            fileName = "../assets/ASL/" + fileName;
+            $('video').remove();
+            $("<video controls />").attr('src',fileName).attr('type','video/mp4').prependTo($('.prompt'));
+        }
     }
     else{
         alert("You are finished!");
     }
+
 
     let record_area = document.getElementsByClassName("video")[0];
     let text = record_area.getElementsByTagName("p")[0];
@@ -70,3 +79,12 @@ function submit_button(){
     text.innerHTML = "I am a Video";
 }
 
+
+$(document).ready(function(){
+
+    let fileName = "ASL_";
+    fileName += $(".step-counter")[0].innerHTML + "\.mp4";
+    fileName = "../assets/ASL/" + fileName;
+    
+    $("<video controls />").attr('src',fileName).attr('type','video/mp4').prependTo($('.prompt'));
+});

@@ -4,11 +4,11 @@
 
     <head>
       <title> Submit </title>
-      <link rel="stylesheet" href="/styles/submit.css" type="text/css" />
+      <link rel="stylesheet" href="styles/submit.css" type="text/css" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="/scripts/submit.js"></script>
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-      <script src="/scripts/webcam.js"></script>
+      <script src="scripts/webcam.js"></script>
+      <script src="scripts/submit.js"></script>
     </head>
     <body class="wrapper">
 
@@ -129,8 +129,10 @@
         <div class="prompt">
         </div>
         <!-- Video box -->
-        <div id="my_result" style="grid-column: 2; grid-row: 2;"></div>
-        <div id="my_camera" style="width:500px; height:500px; grid-column: 3; grid-row: 2;"></div>
+        <div id="my_result"></div>
+        <div id="my_camera"></div>
+
+        <!-- Webcam Script only works here! -->
         <script>
         Webcam.attach( '#my_camera' );
         function take_snapshot() {
@@ -140,6 +142,7 @@
             Webcam.attach( '#my_camera' );
         }
         </script>
+
         <!-- Buttons box-->
         <div class="buttons">
             <button id="take-picture" onclick="take_snapshot()">Take Picture</button>

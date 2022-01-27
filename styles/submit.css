@@ -106,6 +106,18 @@ nav {
     grid-row: 2;
 }
 
+div#my_result {
+    grid-column: 2; 
+    grid-row: 2;
+}
+
+div#my_camera {
+    width:500px; 
+    height:500px; 
+    grid-column: 3;
+    grid-row: 2;
+}
+
 .prompt p {
     text-align: center;
 }

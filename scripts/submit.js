@@ -2,62 +2,6 @@
 
 // Function is responsible for the record button actions
 // For now it is doing some dumb stuff in vanilla js
-function record_button(){
-
-    let timerID;
-
-    let record_area = document.getElementsByClassName("video")[0];
-    let text = record_area.getElementsByTagName("p")[0];
-
-    let n = 5;
-    text.innerHTML = "Recording will start in " + n + " seconds";
-    timerID = setInterval(countdown, 1000);
-
-    // Countdown function
-    function countdown(){
-
-        if (n == 0){
-            clearInterval(timerID);
-            timerID = null;
-            record();
-        }
-        else{
-            n -= 1;
-            text.innerHTML = "Recording will start in " + n + " seconds";
-        }
-    }
-
-    // Function simulating the recording process
-    function record(){
-        let recording_time = 16;
-        text.innerHTML = "Recording time left: " + recording_time;
-
-        timerID = setInterval(function(){
-            if (recording_time == 0){
-                clearInterval(timerID);
-                timerID = null;
-                text.innerHTML = "Done Recording!";
-            }
-            else{
-                recording_time -= 1;
-                text.innerHTML = "Recording time left: " + recording_time;
-            }
-        }, 1000);
-    }
-
-}
-
-
-// Function responsible for what happens when the restart button is pressed
-function restart_button(){
-    let record_area = document.getElementsByClassName("video")[0];
-    let text = record_area.getElementsByTagName("p")[0];
-
-    text.innerHTML = "Restarting recording";
-
-    // Calls on the record_button function
-    record_button();
-}
 
 
 // Function responsible for the submit button actions
@@ -91,16 +35,10 @@ function submit_button(){
     else{
         alert("You are finished!");
     }
-
-    // Resetting the recording process
-    let record_area = document.getElementsByClassName("video")[0];
-    let text = record_area.getElementsByTagName("p")[0];
-
-    text.innerHTML = "I am a Video";
 }
 
 // Load the first prompt when the webpage is ready
-$(document).ready(function(){
+$(document).ready(async function(){
 
     let fileName = "ASL_";
     fileName += $(".step-counter")[0].innerHTML + "\.mp4";

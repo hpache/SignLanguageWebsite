@@ -4,12 +4,12 @@
 
     <head>
       <title> Submit </title>
-      <link rel="stylesheet" href="./styles/submit.css" type="text/css" />
+      <link rel="stylesheet" href="/styles/submit.css" type="text/css" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="./scripts/submit.js"></script>
+      <script src="/scripts/submit.js"></script>
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      <script src="/scripts/webcam.js"></script>
     </head>
-
     <body class="wrapper">
 
         <nav>
@@ -129,13 +129,20 @@
         <div class="prompt">
         </div>
         <!-- Video box -->
-        <div class="video">
-            <p> I am a video </p>
-        </div>
+        <div id="my_result" style="grid-column: 2; grid-row: 2;"></div>
+        <div id="my_camera" style="width:500px; height:500px; grid-column: 3; grid-row: 2;"></div>
+        <script>
+        Webcam.attach( '#my_camera' );
+        function take_snapshot() {
+            Webcam.snap( function(data_uri) {
+                document.getElementById('my_result').innerHTML = '<img id="image" src="'+data_uri+'"/>';
+            });
+            Webcam.attach( '#my_camera' );
+        }
+        </script>
         <!-- Buttons box-->
         <div class="buttons">
-            <button id="record-button" onclick="record_button()">Record</button>
-            <button id="restart-button" onclick="restart_button()">Restart</button>
+            <button id="take-picture" onclick="take_snapshot()">Take Picture</button>
             <button id="submit-button" onclick="submit_button()">Submit</button> 
         </div>
         

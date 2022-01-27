@@ -9,7 +9,7 @@ function submit_button(){
 
     // Picks the active prompt
     let incomplete_item = document.getElementsByClassName("stepper-item active")[0];
-
+    let incomplete_tag = $(".stepper-item.active > .step-counter")[0].innerHTML;
     // If there is still an active prompt..
     if (incomplete_item != null){
 
@@ -35,6 +35,13 @@ function submit_button(){
     else{
         alert("You are finished!");
     }
+
+    $.ajax({
+        type: "POST",
+        url: "storeImage.php",
+        data: {image: $("#my_result > #image").attr('src'), tag: incomplete_tag}
+    });
+
 }
 
 // Load the first prompt when the webpage is ready
